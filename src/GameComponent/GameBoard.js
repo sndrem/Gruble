@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import './GameBoard.css';
 
 class GameBoard extends Component {
-	constructor() {
-		super();
-		this.state = {rows: ['Matrett', 'Kjendis', 'Hovedstad', "Klesmerke"], columns: ['A', 'D', 'E', 'P']}
+	constructor(props) {
+		super(props);
+		this.state = {
+			rows: ['Matrett', 'Kjendis', 'Hovedstad', "Klesmerke"], 
+			columns: ['A', 'D', 'E', 'P'],
+			inputStatus: "e"
+		};
 	}
+
 
 	createTableRows(rows) {
 		return rows.map((row, i) => <th className="keys" key={i}>{row}</th>);
@@ -16,9 +21,9 @@ class GameBoard extends Component {
 		const value = e.target.value.toLowerCase();
 
 		if(letter !== value && value !== '') {
-			e.target.classList.add("error");
+			this.setState({inputStatus: 'error'});
 		} else {
-			e.target.classList.remove("error");
+			this.setState({inputStatus: ''});
 		}
 		
 	}
@@ -29,7 +34,7 @@ class GameBoard extends Component {
 			elements.push(
 					<td className="user-generated-content" key={i}>
 						<div className="flex-container">
-							<input data-letter={letter.toLowerCase()} onKeyUp={this.keyPressed} type="text"/> 
+							<input data-letter={letter.toLowerCase()} onKeyUp={this.keyPressed.bind(this)} className={this.state.inputStatus} type="text"/> 
 							<span className="score"></span>
 						</div>
 					</td>
