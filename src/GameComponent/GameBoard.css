@@ -1,14 +1,59 @@
 .table {
-	height: 500px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.table .keys {
+	background: #70CFE2;
+	border: none;
+}
+
+.hidden {
+	opacity: 0;
 }
 
 table {
+	background: #E6E6E6;
 	margin: 0 auto;
-	border: 1px solid black;
 	width: 90%;
-	height: 70%;
+	height: 400px;
 }
 
-table, tbody, tr, td, th {
+tbody, tr, td, th {
 	border: 1px solid black;
+}
+
+th.keys {
+	width: 25%;
+	padding: 10px 0px;
+}
+
+td.keys {
+	width: 10%;
+}
+
+.user-generated-content {
+	/*background: red;*/
+
+}
+
+.flex-container input[type="text"]{
+	display: block;
+	width: 90%;
+	margin: 0 auto;
+	height: 80px;
+	border: 0;
+	background: #E6E6E6;
+	text-align: center;
+}
+
+.flex-container .score {
+	display: block;
+	font-weight: bold;
+}
+
+.error {
+	background: red;
 }

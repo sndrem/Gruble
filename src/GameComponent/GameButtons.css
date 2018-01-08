@@ -1,11 +1,13 @@
-.game-buttons {
-	/*background: red;*/
-}
 
 .game-buttons ul {
 	list-style: none;
 	margin: 20px 0px;
-	padding: 0;
+	padding: 10px;
+	border-radius: 5px;
+	display: inline-block;
+	background: #222;
+	color: white;
+
 }
 
 .game-buttons ul li {
