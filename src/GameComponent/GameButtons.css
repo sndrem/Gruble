@@ -1,0 +1,19 @@
+.game-buttons {
+	/*background: red;*/
+}
+
+.game-buttons ul {
+	list-style: none;
+	margin: 20px 0px;
+	padding: 0;
+}
+
+.game-buttons ul li {
+	margin: 0;
+	padding: 0;
+}
+
+.game-buttons ul li:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
