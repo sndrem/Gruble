@@ -1,0 +1,14 @@
+.table {
+	height: 500px;
+}
+
+table {
+	margin: 0 auto;
+	border: 1px solid black;
+	width: 90%;
+	height: 70%;
+}
+
+table, tbody, tr, td, th {
+	border: 1px solid black;
+}
