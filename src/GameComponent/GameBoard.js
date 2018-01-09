@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Cell from './Cell.js';
 import './GameBoard.css';
 
 class GameBoard extends Component {
@@ -32,12 +33,7 @@ class GameBoard extends Component {
 		let elements = [];
 		for(let i = 0; i < nums; i++) {
 			elements.push(
-					<td className="user-generated-content" key={i}>
-						<div className="flex-container">
-							<input data-letter={letter.toLowerCase()} onKeyUp={this.keyPressed.bind(this)} className={this.state.inputStatus} type="text"/> 
-							<span className="score"></span>
-						</div>
-					</td>
+					<Cell letter={letter} key={i} />
 				)
 		}
 		return elements;
