@@ -63,7 +63,7 @@ class GameComponent extends Component {
 		this.setState({
 			rows: this.pickRows(data.topics, 4), 
 			columns: this.pickRows(data.letters, 5),
-			statusClass: 'yeah'
+			statusClass: 'unintialized'
 		});
 
 		this.createTableColumns(this.state.columns);

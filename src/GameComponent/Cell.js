@@ -5,11 +5,18 @@ class Cell extends Component {
 
 	constructor(props) {
 		super(props);
-		console.log(props);
 		this.state = {
 			statusClass: this.props.statusClass
 		}
 	}
+
+	componentWillReceiveProps(nextProps){
+		this.state = {
+		    statusClass: nextProps.statusClass
+		  };	  
+	}
+
+	
 
 	checkInput(e) {
 		const value = e.target.value.toLowerCase();
