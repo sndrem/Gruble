@@ -11,7 +11,7 @@ class Cell extends Component {
 	}
 
 	componentWillReceiveProps(nextProps){
-		this.state = {
+		this.setState = {
 		    statusClass: nextProps.statusClass
 		  };	  
 	}

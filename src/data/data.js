@@ -1,5 +1,6 @@
 const data = {
 	letters: [	'a',
+	
 				'b',
 				'c',
 				'd',
@@ -41,6 +42,17 @@ const data = {
 		'Restaurant',
 		'Hovedstad',
 		'By'
+	],
+
+	blacklist: [
+		'c',
+		'z',
+		'x',
+		'q',
+		'y',
+		'æ',
+		'ø',
+		'å'
 	]
 }
 

@@ -10,8 +10,9 @@ class GameComponent extends Component {
 		super();
 		this.state = {
 			rows: this.pickRows(data.topics, 4), 
-			columns: this.pickRows(data.letters, 5),
-			statusClass: 'unintialized'
+			columns: this.pickRows(data.letters, 5, data.blacklist),
+			statusClass: 'unintialized',
+			blacklist: [...data.blacklist]
 		};
 
 	}
@@ -21,7 +22,6 @@ class GameComponent extends Component {
 	}
 
 	fillData(nums, letter) {
-		console.log("Filling data");
 		let elements = [];
 		for(let i = 0; i < nums; i++) {
 			elements.push(
@@ -40,12 +40,18 @@ class GameComponent extends Component {
 		})
 	}
 
+	removeElementsInBlacklist(elements, blacklist) {
+		const x = elements.filter(elem => !blacklist.includes(elem));
+		console.log(x, blacklist);
+		return x;
+	}
 
-	pickRows(rows, numOfRows) {
+
+	pickRows(rows, numOfRows, blacklist=[]) {
 		if(numOfRows > rows.length || numOfRows <= 0) {
 			throw new Error(`You must pick a positive number between 0 and ${rows.length}`);
 		} 
-		const gameRows = [...rows];
+		const gameRows = [...this.removeElementsInBlacklist(rows, blacklist)];
 		let pickedRows = [];
 		for(let i = 0; i < numOfRows; i++) {
 			const random = this.generateRandomNumber(0, gameRows.length);
@@ -62,7 +68,7 @@ class GameComponent extends Component {
 	resetBoard() {
 		this.setState({
 			rows: this.pickRows(data.topics, 4), 
-			columns: this.pickRows(data.letters, 5),
+			columns: this.pickRows(data.letters, 5, this.state.blacklist),
 			statusClass: 'unintialized'
 		});
 
@@ -70,10 +76,20 @@ class GameComponent extends Component {
 		this.createTableRows(this.state.rows);
 	}
 
+	editBlacklist(e) {
+		const blacklist = e.target.value.split(',').filter(letter => {
+			return letter !== '';
+		})
+		console.log("Edit blacklist", blacklist);
+		this.setState({
+			blacklist
+		});
+	}
+
 	render() {
 		return (
 				<div className="game-board">
-					<GameButtons resetBoard={this.resetBoard.bind(this)} />
+					<GameButtons resetBoard={this.resetBoard.bind(this)} blacklist={this.state.blacklist} editBlacklist={this.editBlacklist.bind(this)} />
 					<GameBoard pickRows={this.pickRows.bind(this)} createTableRows={this.createTableRows.bind(this)} createTableColumns={this.createTableColumns.bind(this)} rows={this.state.rows} columns={this.state.columns} />
 				</div>
 				
