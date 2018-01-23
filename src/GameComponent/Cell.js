@@ -3,11 +3,11 @@ import './Cell.css';
 
 class Cell extends Component {
 
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
+		console.log(props);
 		this.state = {
-			input: '',
-			statusClass: 'unintialized'
+			statusClass: this.props.statusClass
 		}
 	}
 
@@ -32,7 +32,7 @@ class Cell extends Component {
 		return (
 				<td className="user-generated-content">
 						<div className="flex-container">
-							<input data-letter={this.props.letter} type="text" className={this.state.statusClass} onChange={this.checkInput.bind(this)}/> 
+							<input data-letter={this.props.letter} key={this.props.letter} type="text" className={this.state.statusClass} onChange={this.checkInput.bind(this)} /> 
 							<span className="score"></span>
 						</div>
 					</td>
