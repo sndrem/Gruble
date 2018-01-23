@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import data from '../data/data.js';
 import Cell from './Cell.js';
 import './GameBoard.css';
 
@@ -6,12 +7,10 @@ class GameBoard extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			rows: ['Matrett', 'Kjendis', 'Hovedstad', "Klesmerke"], 
-			columns: ['A', 'D', 'E', 'P'],
-			inputStatus: "e"
+			rows: this.props.pickRows(data.topics, 4), 
+			columns: this.props.pickRows(data.letters, 5)
 		};
 	}
-
 
 	createTableRows(rows) {
 		return rows.map((row, i) => <th className="keys" key={i}>{row}</th>);
@@ -30,7 +29,7 @@ class GameBoard extends Component {
 	createTableColumns(columns) {
 		return columns.map((col, i) => {
 			return <tr key={i}>
-					<td className="keys" key={i}>{col}</td>
+					<td className="keys" key={i}>{col.toUpperCase()}</td>
 					{this.fillData(this.state.columns.length, col)}
 				</tr>
 		})
