@@ -1,0 +1,7 @@
+.flex-container .valid {
+	background: #64EC69;
+}
+
+.flex-container .not-valid {
+	background: #E4424B;
+}

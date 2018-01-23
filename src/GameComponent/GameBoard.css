@@ -39,7 +39,7 @@ td.keys {
 
 }
 
-.flex-container input[type="text"]{
+input[type="text"]{
 	display: block;
 	width: 90%;
 	margin: 0 auto;

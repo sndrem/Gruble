@@ -17,18 +17,6 @@ class GameBoard extends Component {
 		return rows.map((row, i) => <th className="keys" key={i}>{row}</th>);
 	}
 
-	keyPressed(e) {
-		const letter = e.target.dataset.letter;
-		const value = e.target.value.toLowerCase();
-
-		if(letter !== value && value !== '') {
-			this.setState({inputStatus: 'error'});
-		} else {
-			this.setState({inputStatus: ''});
-		}
-		
-	}
-
 	fillData(nums, letter) {
 		let elements = [];
 		for(let i = 0; i < nums; i++) {
